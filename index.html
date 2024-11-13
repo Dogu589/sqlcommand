@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLMap Komut Oluşturucu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  
+
+    <script type="text/javascript">
+        document.write(unescape("%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20.side-image%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20bottom%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20200px%3B%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.left-image%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%200%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.right-image%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20right%3A%200%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.container%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20220px%3B%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%23output%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-image%3A%20url%28%27https%3A%2F%2Fimg.freepik.com%2Fpremium-photo%2Fblack-background-with-highcontrast-pixelated-digital-texture_8493-4851.jpg%3Fsize%3D626%26ext%3Djpg%26ga%3DGA1.1.1819120589.1727481600%26semt%3Dais_hybrid%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-size%3A%20cover%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-position%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20rgb%28234%2C%200%2C%200%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%40keyframes%20pulse%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%200%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-color%3A%20rgb%280%2C%200%2C%20255%29%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%2050%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-color%3A%20rgb%28255%2C%200%2C%200%29%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20100%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-color%3A%20rgb%280%2C%200%2C%20255%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20input%5Btype%3D%22text%22%5D%2C%20input%5Btype%3D%22number%22%5D%2C%20button%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%202px%20solid%20transparent%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20pulse%201.5s%20infinite%3B%20%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%3C%2Fstyle%3E"));
+      </script>
+
+
+</head>
+
+<script type="text/javascript">
+    document.write(unescape("%3Cscript%3E%0A%20%20%20%20var%20base64Html%20%3D%20%22PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPgogICAgZG9jdW1lbnQud3JpdGUodW5lc2NhcGUoIiUzQ2JvZHklM0UlMEElMjAlMjAlMjAlMjAlM0NpbWclMjBzcmMlM0QlMjJodHRwcyUzQSUyRiUyRmkuaWJiLmNvJTJGODljR001WSUyRmxvZ28ucG5nJTIyJTIwYWx0JTNEJTIyTGVmdCUyMEltYWdlJTIyJTIwY2xhc3MlM0QlMjJzaWRlLWltYWdlJTIwbGVmdC1pbWFnZSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUzQ2ltZyUyMHNyYyUzRCUyMmh0dHBzJTNBJTJGJTJGaS5pYmIuY28lMkYyNzdHTU15JTJGZG9ndS5naWYlMjIlMjBhbHQlM0QlMjJSaWdodCUyMEltYWdlJTIyJTIwY2xhc3MlM0QlMjJzaWRlLWltYWdlJTIwcmlnaHQtaW1hZ2UlMjIlM0UlMEElMjAlMjAlMjAlMjAlM0NkaXYlMjBjbGFzcyUzRCUyMmNvbnRhaW5lciUyMiUzRSIpKTsKICA8L3NjcmlwdD4%3D%22%3B%0A%0A%20%20%20%20var%20decodedHtml%20%3D%20atob%28base64Html%29%3B%0A%20%20%20%20document.write%28decodedHtml%29%3B%0A%20%20%3C%2Fscript%3E"));
+  </script>
+  
+
+        <header class="header">
+            <h1 class="title">SQLMap Komut Oluşturucu</h1>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span class="theme-icon">🌓</span>
+                <span class="theme-text">Temayı Değiştir</span>
+            </button>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Hedef Seçenekleri
+                    <span class="tooltip">
+                        <span class="info-icon">?</span>
+                        <span class="tooltiptext">Hedef URL'nizi veya Google dork'unuzu tanımlayın. En az bir tane gereklidir.</span>
+                    </span>
+                </h2>
+                <div class="form-group">
+                    <label for="url">Hedef URL:</label>
+                    <input type="text" id="url" placeholder="http://example.com/vuln.php?id=1">
+                </div>
+                <div class="form-group">
+                    <label for="google-dork">Google Dork:</label>
+                    <input type="text" id="google-dork" placeholder='inurl:".php?id=1"'>
+                </div>
+                <div class="form-group">
+                    <label for="data">POST Data:</label>
+                    <input type="text" id="data" placeholder="id=1&user=admin">
+                </div>
+                <div class="form-group">
+                    <label for="cookie">Cookie:</label>
+                    <input type="text" id="cookie" placeholder="PHPSESSID=abc123">
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Bağlantı Seçenekleri
+                    <span class="tooltip">
+                        <span class="info-icon">?</span>
+                        <span class="tooltiptext">Bağlantı ayarlarını ve anonimlik seçeneklerini yapılandırın.</span>
+                    </span>
+                </h2>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="random-agent">
+                        <label for="random-agent">Random User-Agent</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tor">
+                        <label for="tor">Tor Network Kullan</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="proxy">Proxy:</label>
+                    <input type="text" id="proxy" placeholder="http://127.0.0.1:8080">
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Keşif Seçenekleri
+                    <span class="tooltip">
+                        <span class="info-icon">?</span>
+                        <span class="tooltiptext">Test seviyelerini ve ayrıntı düzeyini yapılandırın.</span>
+                    </span>
+                </h2>
+                <div class="form-group">
+                    <label for="level">Level (1-5):</label>
+                    <input type="number" id="level" min="1" max="5" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="risk">Risk (1-3):</label>
+                    <input type="number" id="risk" min="1" max="3" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="verbosity">Verbosity (0-6):</label>
+                    <input type="number" id="verbosity" min="0" max="6" value="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Teknikler
+                    <span class="tooltip">
+                        <span class="info-icon">?</span>
+                        <span class="tooltiptext">Test etmek için SQL enjeksiyon tekniklerini seçin.</span>
+                    </span>
+                </h2>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech-b" checked>
+                        <label for="tech-b">Boolean-based (B)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech-e" checked>
+                        <label for="tech-e">Error-based (E)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech-u" checked>
+                        <label for="tech-u">Union-based (U)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech-s" checked>
+                        <label for="tech-s">Stacked (S)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech-t" checked>
+                        <label for="tech-t">Time-based (T)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech-q" checked>
+                        <label for="tech-q">Inline (Q)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Numaralandırma
+                    <span class="tooltip">
+                        <span class="info-icon">?</span>
+                        <span class="tooltiptext">Veritabanından çıkarılacak verileri seçin.</span>
+                    </span>
+                </h2>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="all">
+                        <label for="all">All (--all)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="banner">
+                        <label for="banner">Banner</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="current-user">
+                        <label for="current-user">Current User</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="current-db">
+                        <label for="current-db">Current DB</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="passwords">
+                        <label for="passwords">Passwords</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="dbs">
+                        <label for="dbs">Databases</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tables">
+                        <label for="tables">Tables</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="columns">
+                        <label for="columns">Columns</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="schema">
+                        <label for="schema">Schema</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="dump">
+                        <label for="dump">Dump Data</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Gelişmiş Ayarlar
+                    <span class="tooltip">
+                        <span class="info-icon">?</span>
+                        <span class="tooltiptext">Ek saldırı ve sistem seçenekleri.</span>
+                    </span>
+                </h2>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="os-shell">
+                        <label for="os-shell">OS Shell</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="os-pwn">
+                        <label for="os-pwn">OS Pwn</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="batch" checked>
+                        <label for="batch">Batch Mode</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="flush-session">
+                        <label for="flush-session">Flush Session</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="generateCommand()">Komutu Göster</button>
+        
+        <div class="grid">
+            <div class="card">
+                <h2>Oluşturulan Komut</h2>
+                <div id="output"></div>
+                <button class="copy-btn" onclick="copyCommand()">Komutu Kopyala</button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>SQLmap Komut Oluşturucusu</p>
+            <p class="version">Doğu589 Tarafından Hazırlanmıştır</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
