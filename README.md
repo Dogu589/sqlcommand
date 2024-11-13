@@ -3,6 +3,8 @@
 
 # SQLMap Komut Üretici Aracı
 
+## Domain: https://dogu589.github.io/sqlcommand
+
 ##### SQLMap Komut Üretici Aracı, penetrasyon testi yapan uzmanlar ve güvenlik araştırmacıları için SQL enjeksiyon açıklıklarını tespit etmek amacıyla SQLMap komutlarını hızlı ve verimli bir şekilde oluşturmayı sağlayan web tabanlı bir uygulamadır. Kullanıcıların belirledikleri parametrelere göre özelleştirilebilen komutlar oluşturulmasına olanak tanır, böylece karmaşık parametrelerle uğraşmak yerine ihtiyaç duyulan testleri kolayca yapabilirsiniz. Arayüzün basitliği, tüm deneyim seviyelerindeki kullanıcılar için erişilebilir olmasını sağlar.
 
 # Özellikler
